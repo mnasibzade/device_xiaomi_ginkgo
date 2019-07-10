@@ -198,6 +198,9 @@ ro.hardware.keystore_desede=true
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
+# Media
+debug.stagefright.c2inputsurface=-1
+
 # Phantom process monitoring
 sys.fflag.override.settings_enable_monitor_phantom_procs=false
 
