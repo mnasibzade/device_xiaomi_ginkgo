@@ -25,9 +25,10 @@
          This value will be subtracted from rounded_corner_radius to more accurately provide a "radius" for the rounded corner. -->
     <dimen name="rounded_corner_radius_adjustment">25px</dimen>
 
-    <!-- Height of the status bar -->
-    <dimen name="status_bar_height_portrait">80.0px</dimen>
-    <dimen name="status_bar_height_landscape">28.0dp</dimen>
+    <!-- Height of the status bar.
+         Do not read this dimen directly. Use {@link SystemBarUtils#getStatusBarHeight} instead.
+         -->
+    <dimen name="status_bar_height">28dp</dimen>
     
     <!-- Margin on the left side of the carrier text on Keyguard -->
     <dimen name="keyguard_carrier_text_margin">30dp</dimen>
