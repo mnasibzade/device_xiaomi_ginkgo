@@ -26,6 +26,10 @@ $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 # Inherit some common CalyxOS stuff
 $(call inherit-product, vendor/calyx/config/common.mk)
 
+#PRODUCT_BUILD_SUPER_PARTITION := false
+PRODUCT_USE_DYNAMIC_PARTITIONS := true
+PRODUCT_RETROFIT_DYNAMIC_PARTITIONS := true
+
 # Device identifier
 PRODUCT_NAME := calyx_ginkgo
 PRODUCT_DEVICE := ginkgo

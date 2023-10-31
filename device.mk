@@ -228,7 +228,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-fpc.idc \
     $(LOCAL_PATH)/configs/idc/uinput-goodix.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/uinput-goodix.idc
-
+#Init
+PRODUCT_PACKAGES += \
+    fstab.qcom_ramdisk \
 # IPACM
 PRODUCT_PACKAGES += \
     ipacm \
