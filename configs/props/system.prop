@@ -59,7 +59,6 @@ pm.sleep_mode=1
 
 # Media
 debug.stagefright.ccodec=1
-debug.stagefright.omx_default_rank=0
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
 media.stagefright.enable-fma2dp=true
