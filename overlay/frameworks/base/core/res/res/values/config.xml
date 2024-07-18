@@ -820,4 +820,7 @@
 
     <!-- Whether the new Auto Selection Network UI should be shown -->
     <bool name="config_enableNewAutoSelectNetworkUI">true</bool>
+
+     <!-- Boost Framework -->
+    <bool name="config_supportsBoostFramework">true</bool>
 </resources>
