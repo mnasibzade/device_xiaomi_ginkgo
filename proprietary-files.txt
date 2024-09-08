@@ -1784,17 +1784,6 @@ vendor/lib/libAlacSwDec.so|1d074a0415ee358cd13c981e35266cff4c6863ce
 vendor/lib/libApeSwDec.so|ce425ef9372ed6635e313422b3578f77b90ff526
 vendor/lib/libFlacSwDec.so|01c7a51d93c2fe447e23c1210832b39b171393e3
 vendor/lib/libI420colorconvert.so|976e00c9e8966e4c7100099666846770d34f4153
-vendor/lib/libOmxAacDec.so|9dd31bc40cde583f1b0e2b4a9fc802145ef69164
-vendor/lib/libOmxAlacDec.so|fa50ab06523c4af5c01255afcc7bb98700db68f8
-vendor/lib/libOmxAmrDec.so|f7b31c4c0b8acd8422573df6fcfb1103062d6f9c
-vendor/lib/libOmxAmrwbplusDec.so|0e88d271c603e0d6a231a24aca51561d2b604794
-vendor/lib/libOmxApeDec.so|f0fac8e060577bd6b11d555778fe252be48afbac
-vendor/lib/libOmxDsdDec.so|f74936badeb8303b2bb17475b9cd157b1c81131c
-vendor/lib/libOmxEvrcDec.so|90bbf4baf4f8b830534a2f94aedef9bd44e81a13
-vendor/lib/libOmxG711Dec.so|922eba61fdcad6619fa03f456e066e572e0c6ff9
-vendor/lib/libOmxQcelp13Dec.so|1836ba707a7a1642ec0edf236be0e713f18bb90b
-vendor/lib/libOmxWmaDec.so|6c8840e2d685a665c633d301afe916d83536e3fd
-vendor/lib/libOmxVideoDSMode.so|979e5cb96260c8fa60eb55825a2a22273f524c65
 vendor/lib/libdsd2pcm.so|c5ab1afd7a5a23bf83d80b5ac74247c3dd2085af
 vendor/lib/libmm-color-convertor.so|22d7b8f77d0f19826743206d79bdf9a6a8c9e18f
 vendor/lib/libmmosal.so|a2203f5be5dc1ee10d2f5da8f167a46acb0a660e
@@ -1853,6 +1842,7 @@ vendor/lib64/vendor.xiaomi.hardware.misys@1.0.so
 vendor/lib64/vendor.xiaomi.hardware.misys@2.0.so
 vendor/lib64/vendor.xiaomi.hardware.misys@3.0.so
 
+<<<<<<< HEAD
 # Neural-networks - from LA.UM.9.11.r1-04500-NICOBAR.0
 vendor/bin/hw/android.hardware.neuralnetworks@1.3-service-qti|b6f24c768a260cf98d2ece534807318529567fd2
 vendor/etc/init/android.hardware.neuralnetworks@1.3-service-qti.rc|4b7f2c5f914f3eef38f19936c0a06efc09b5b28c
@@ -1864,6 +1854,12 @@ vendor/lib64/unnhal-acc-hvx.so|00eb79608cb6e3f19eaf9389632fdbfa03b2df62
 
 # NFC - from LA.UM.9.11.r1-04500-NICOBAR.0
 vendor/lib/libsn100u_fw.so|2bc1887b71b4557b75e26465f6917525bfd43e4a
+=======
+# Peripheral manager
+vendor/bin/pm-proxy
+vendor/bin/pm-service
+vendor/lib64/libperipheral_client.so
+>>>>>>> 472f145d7 (laurel_sprout: remove OMX)
 
 # Peripheral manager - from LA.UM.9.11.r1-04500-NICOBAR.0
 vendor/bin/pm-proxy|6cfaaf498d9360af9d7c9e4675a1dc209454fe24
