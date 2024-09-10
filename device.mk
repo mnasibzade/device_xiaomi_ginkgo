@@ -159,7 +159,8 @@ TARGET_SUPPORTS_OMX_SERVICE := false
 PRODUCT_PACKAGES += \
     libcrypto-v33 \
     android.hardware.drm-service.clearkey \
-    android.hardware.drm@1.3.vendor
+    android.hardware.drm@1.3.vendor \
+    libcrypto_shim
 
 # Fingerprint
 PRODUCT_PACKAGES += \
