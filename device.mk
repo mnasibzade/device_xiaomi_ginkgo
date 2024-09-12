@@ -500,9 +500,9 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.4.vendor \
     android.hardware.wifi@1.5.vendor \
     android.hardware.wifi-service \
+    libcld80211 \
     hostapd \
     libwifi-hal-ctrl \
-    libwifi-hal-qcom \
     libwpa_client \
     TetheringConfigOverlay \
     WifiOverlay \
