@@ -336,6 +336,8 @@ TARGET_COMMON_QTI_COMPONENTS := \
 PRODUCT_PACKAGES += \
     android.hardware.power-service.xiaomi-libperfmgr
 
+TARGET_PROVIDES_POWERHAL := true
+
 # Perf
 PRODUCT_PACKAGES += \
     libqti-perfd-client

@@ -37,13 +37,6 @@
         <instance>default</instance>
     </interface>
 </hal>
-<hal format="aidl" optional="true">
-    <name>android.hardware.power</name>
-    <interface>
-        <name>IPower</name>
-        <instance>default</instance>
-    </interface>
-</hal>
 <hal format="hidl" optional="true">
     <name>android.hardware.usb</name>
     <version>1.0-3</version>
@@ -56,6 +49,34 @@
     <name>android.hardware.vibrator</name>
     <interface>
         <name>IVibrator</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>vendor.qti.hardware.perf2</name>
+    <interface>
+        <name>IPerf</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>vendor.qti.hardware.power.powermodule</name>
+    <interface>
+        <name>IPowerModule</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>vendor.qti.hardware.servicetrackeraidl</name>
+    <interface>
+        <name>IServicetracker</name>
+        <instance>default</instance>
+    </interface>
+</hal>
+<hal format="aidl" optional="true">
+    <name>vendor.qti.qspmhal</name>
+    <interface>
+        <name>IQspmhal</name>
         <instance>default</instance>
     </interface>
 </hal>
