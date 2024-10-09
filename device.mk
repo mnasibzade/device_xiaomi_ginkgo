@@ -153,6 +153,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # DRM
 PRODUCT_PACKAGES += \
+    libcrypto-v33 \
     android.hardware.drm-service.clearkey \
     android.hardware.drm@1.3.vendor
 
