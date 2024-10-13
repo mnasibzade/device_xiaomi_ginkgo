@@ -32,8 +32,6 @@ TARGET_2ND_CPU_VARIANT := cortex-a73
 
 # Platform
 BOARD_USES_QCOM_HARDWARE := true
-TARGET_BOARD_PLATFORM := trinket
-TRINKET := trinket
 
 # Audio
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := false
