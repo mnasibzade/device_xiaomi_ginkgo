@@ -325,6 +325,13 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_BROKEN_VERIFY_USES_LIBRARIES := true
 
+# Platform
+MSMSTEPPE := trinket
+TARGET_BOARD_PLATFORM := $(MSMSTEPPE)
+TARGET_COMMON_QTI_COMPONENTS := \
+    adreno \
+    perf
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.xiaomi-libperfmgr
