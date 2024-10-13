@@ -393,6 +393,7 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     libprotobuf-cpp-full-3.9.1-vendorcompat \
     librmnetctl \
+    libnetutils.vendor \
     libsqlite.vendor:64
 
 PRODUCT_PACKAGES += \
