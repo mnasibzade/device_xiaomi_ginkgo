@@ -13,18 +13,20 @@
 // limitations under the License.
 
 cc_binary {
+    name: "android.hardware.lights-service.qti",
     relative_install_path: "hw",
-    defaults: ["hidl_defaults"],
-    name: "android.hardware.light@2.0-service.ginkgo",
-    proprietary: true,
-    init_rc: ["android.hardware.light@2.0-service.ginkgo.rc"],
-    vintf_fragments: ["android.hardware.light@2.0-service.ginkgo.xml"],
-    srcs: ["service.cpp", "Light.cpp"],
+    init_rc: ["android.hardware.lights-qti.rc"],
+    vintf_fragments: ["android.hardware.lights-qti.xml"],
+    vendor: true,
     shared_libs: [
-        "libhardware",
-        "libhidlbase",
+        "libbase",
         "liblog",
-        "libutils",
-        "android.hardware.light@2.0",
+        "libhardware",
+        "libbinder_ndk",
+        "android.hardware.light-ndk_platform",
+    ],
+    srcs: [
+        "Lights.cpp",
+        "main.cpp",
     ],
 }
