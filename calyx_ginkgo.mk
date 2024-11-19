@@ -26,7 +26,6 @@ $(call inherit-product, device/xiaomi/ginkgo/device.mk)
 # Inherit some common CalyxOS stuff
 $(call inherit-product, vendor/calyx/config/common.mk)
 
-
 # Device identifier
 PRODUCT_NAME := calyx_ginkgo
 PRODUCT_DEVICE := ginkgo
