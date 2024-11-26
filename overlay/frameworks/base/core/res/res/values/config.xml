@@ -857,4 +857,7 @@
 
     <!-- Boost Framework -->
     <bool name="config_supportsBoostFramework">true</bool>
+    
+    <!-- Disable QS media player turbulence effect by default -->
+    <bool name="config_mediaControlsTurbulenceByDefault">false</bool>
 </resources>
