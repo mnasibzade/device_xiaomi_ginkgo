@@ -189,6 +189,7 @@ vendor/lib64/libfastcvdsp_stub.so
 vendor/lib64/libfastcvopt.so
 vendor/lib64/libseemore.so
 vendor/lib64/libswvdec.so
+vendor/lib64/libflaw.so
 
 # Camera actuator
 vendor/lib/libactuator_ginkgo_gc2375h_ofilm_ii_dw9714.so
