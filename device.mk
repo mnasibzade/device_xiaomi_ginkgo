@@ -419,8 +419,7 @@ PRODUCT_PACKAGES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    lib-imsvt \
-    lib-watermarkshim
+    lib-imsvt
 
 # Soong namespace
 PRODUCT_SOONG_NAMESPACES += \
