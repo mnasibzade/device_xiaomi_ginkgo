@@ -1,17 +1,15 @@
 on boot
-    # White light
-    chown system system /sys/class/leds/white/blink
-    chown system system /sys/class/leds/white/brightness
-    chown system system /sys/class/leds/white/duty_pcts
-    chown system system /sys/class/leds/white/max_brightness
-    chown system system /sys/class/leds/white/pause_hi
-    chown system system /sys/class/leds/white/pause_lo
-    chown system system /sys/class/leds/white/ramp_step_ms
-    chown system system /sys/class/leds/white/start_idx
+    # Backlight
+    chown system system /sys/class/backlight/panel0-backlight/brightness
+    chown system system /sys/class/backlight/panel0-backlight/max_brightness
+    chmod 0644 /sys/class/backlight/panel0-backlight/brightness
+    chmod 0644 /sys/class/backlight/panel0-backlight/max_brightness
 
-    # LCD backlight
-    chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/max_brightness
+    # Real notification light
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/red/breath
+    chmod 660 /sys/class/leds/red/brightness
+    chmod 660 /sys/class/leds/red/breath
 
 service vendor.light /vendor/bin/hw/android.hardware.lights-service.ginkgo
     class hal

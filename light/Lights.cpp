@@ -1,49 +1,49 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
- * Copyright (C) 2020 The LineageOS Project
+ * Copyright (C) 2019 The Android Open Source Project
+ * Copyright (C) 2020-2021 The LineageOS Project
  *
- * SPDX-License-Identifier: Apache-2.0
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
-// Author := dev_harsh1998, Isaac Chen
-
-#define LOG_TAG "android.hardware.lights-service.r5x"
-/* #define LOG_NDEBUG 0 */
+#define LOG_TAG "android.hardware.lights-service_ginkgo"
 
 #include "Lights.h"
-
 #include <android-base/file.h>
 #include <android-base/logging.h>
-#include <unistd.h>
 
 namespace {
 
+/* clang-format off */
 #define PPCAT_NX(A, B) A/B
 #define PPCAT(A, B) PPCAT_NX(A, B)
 #define STRINGIFY_INNER(x) #x
 #define STRINGIFY(x) STRINGIFY_INNER(x)
 
 #define LEDS(x) PPCAT(/sys/class/leds, x)
-#define LCD_ATTR(x) STRINGIFY(PPCAT(LEDS(lcd-backlight), x))
-#define WHITE_ATTR(x) STRINGIFY(PPCAT(LEDS(white), x))
+#define WHITE_ATTR(x) STRINGIFY(PPCAT(LEDS(red), x))
+#define LCD_LED_ATTR(x) STRINGIFY(PPCAT(LEDS(lcd-backlight), x))
+
+/* clang-format on */
 
 using ::android::base::ReadFileToString;
 using ::android::base::WriteStringToFile;
 
 // Default max brightness
 constexpr auto kDefaultMaxLedBrightness = 255;
-constexpr auto kDefaultMaxScreenBrightness = 4095;
-
-// Each step will stay on for 50ms by default.
-constexpr auto kRampStepDurationDefault = 50;
 
 // Write value to path and close file.
 bool WriteToFile(const std::string& path, uint32_t content) {
     return WriteStringToFile(std::to_string(content), path);
-}
-
-bool WriteToFile(const std::string& path, const std::string& content) {
-    return WriteStringToFile(content, path);
 }
 
 uint32_t RgbaToBrightness(uint32_t color) {
@@ -81,11 +81,11 @@ namespace hardware {
 namespace light {
 
 Lights::Lights() {
-std::map<int, std::function<void(int id, const HwLightState&)>> lights_{
+    std::map<int, std::function<void(int id, const HwLightState&)>> lights_{
             {(int)LightType::NOTIFICATIONS,
              [this](auto&&... args) { setLightNotification(args...); }},
             {(int)LightType::BATTERY, [this](auto&&... args) { setLightNotification(args...); }},
-            {(int)LightType::BACKLIGHT, [this](auto&&... args) { setLightBacklight(args...); }}};
+            {(int)LightType::BACKLIGHT, [this](auto&&... args) {setLightBacklight(args...); }}};
 
     std::vector<HwLight> availableLights;
     for (auto const& pair : lights_) {
@@ -98,13 +98,11 @@ std::map<int, std::function<void(int id, const HwLightState&)>> lights_{
     mLights = lights_;
 
     std::string buf;
-
-    if (ReadFileToString(LCD_ATTR(max_brightness), &buf)) {
+    if (ReadFileToString(LCD_LED_ATTR(max_brightness), &buf)) {
         max_screen_brightness_ = std::stoi(buf);
     } else {
-        max_screen_brightness_ = kDefaultMaxScreenBrightness;
-        LOG(ERROR) << "Failed to read max screen brightness, fallback to "
-                   << kDefaultMaxScreenBrightness;
+        max_screen_brightness_ = 4095;
+        LOG(ERROR) << "Failed to read max screen brightness, fallback to " << max_screen_brightness_;
     }
 
     if (ReadFileToString(WHITE_ATTR(max_brightness), &buf)) {
@@ -134,11 +132,6 @@ ndk::ScopedAStatus Lights::getLights(std::vector<HwLight>* lights) {
     return ndk::ScopedAStatus::ok();
 }
 
-void Lights::setLightBacklight(int /*id*/, const HwLightState& state) {
-    uint32_t brightness = RgbaToBrightness(state.color, max_screen_brightness_);
-    WriteToFile(LCD_ATTR(brightness), brightness);
-}
-
 void Lights::setLightNotification(int id, const HwLightState& state) {
     bool found = false;
     for (auto&& [cur_id, cur_state] : notif_states_) {
@@ -158,19 +151,25 @@ void Lights::setLightNotification(int id, const HwLightState& state) {
 void Lights::applyNotificationState(const HwLightState& state) {
     uint32_t white_brightness = RgbaToBrightness(state.color, max_led_brightness_);
 
-    // Turn off the leds (initially)
-    WriteToFile(WHITE_ATTR(blink), 0);
+    WriteToFile(WHITE_ATTR(breath), 0);
 
     if (state.flashMode == FlashMode::TIMED && state.flashOnMs > 0 && state.flashOffMs > 0) {
-        WriteToFile(WHITE_ATTR(ramp_step_ms),
-                    static_cast<uint32_t>(kRampStepDurationDefault)),
+        LOG(DEBUG) << __func__ << ": color=" << std::hex << state.color << std::dec
+                   << " onMs=" << state.flashOnMs << " offMs=" << state.flashOffMs;
+
         // White
-        WriteToFile(WHITE_ATTR(start_idx), 0);
-        WriteToFile(WHITE_ATTR(pause_lo), static_cast<uint32_t>(state.flashOffMs));
-        WriteToFile(WHITE_ATTR(blink), 1);
+        WriteToFile(WHITE_ATTR(delay_off), static_cast<uint32_t>(state.flashOffMs));
+        WriteToFile(WHITE_ATTR(delay_on), static_cast<uint32_t>(state.flashOnMs));
+        WriteToFile(WHITE_ATTR(breath), 1);
     } else {
         WriteToFile(WHITE_ATTR(brightness), white_brightness);
     }
+}
+
+
+void Lights::setLightBacklight(int id, const HwLightState& state) {
+    uint32_t brightness = RgbaToBrightness(state.color, max_screen_brightness_);
+    WriteToFile(LCD_LED_ATTR(brightness), brightness);
 }
 
 }  // namespace light
