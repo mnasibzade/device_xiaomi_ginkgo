@@ -1771,6 +1771,13 @@ vendor/lib64/liblistensoundmodel2.so|858837867d16fd0609b134e6bb54803b85b3ee12
 vendor/lib/hw/sound_trigger.primary.trinket.so
 vendor/lib64/hw/sound_trigger.primary.trinket.so
 
+# Media Codec2 - from Redmi Note 12 Pro 4G OS1.0.10.0.THGMIXM
+vendor/bin/hw/vendor.qti.media.c2@1.0-service|83c2effb6f76cb095bae840d95a2026014d92fe9
+vendor/etc/init/vendor.qti.media.c2@1.0-service.rc|11209316ba8aae64b689217bc13b0804f6620678
+vendor/etc/seccomp_policy/codec2.vendor.base.policy|05b0779b5da2ea640984d46a46a796edeaab5fab
+vendor/etc/seccomp_policy/codec2.vendor.ext.policy|6a9a9eb3261048f02805261568097410e1a23b2d
+vendor/lib/libqcodec2.so|01b1f94e7d17c5616635141ff7bc5e3f304b48f0
+
 # Media - from LA.UM.9.11.r1-04500-NICOBAR.0
 -vendor/lib64/libMpeg4SwEncoder.so|46cca30c76db78d8c5d6b99c2c7e5a00c414bc4f
 vendor/lib/libAlacSwDec.so|1d074a0415ee358cd13c981e35266cff4c6863ce
