@@ -25,13 +25,32 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit from ginkgo device
 $(call inherit-product, device/xiaomi/ginkgo/device.mk)
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
-# Inherit some common PixelOS stuff
+# Inherit some common AlphaDroid stuff
+$(call inherit-product, vendor/alpha/config/common_full_phone.mk)
+
+# Device config
+TARGET_HAS_UDFPS := false
+TARGET_ENABLE_BLUR := false
+TARGET_EXCLUDES_AUDIOFX := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
 TARGET_BOOT_ANIMATION_RES := 1080
 
+# Launcher
+TARGET_INCLUDE_LAWNCHAIR := true
+
+# Debugging
+TARGET_INCLUDE_MATLOG := false
+
+# Extras
+TARGET_INCLUDE_RIMUSIC := true
+
+# Maintainer
+ALPHA_BUILD_TYPE := Official
+ALPHA_MAINTAINER := Munir
+
 # Device identifier
-PRODUCT_NAME := aosp_ginkgo
+PRODUCT_NAME := alpha_ginkgo
 PRODUCT_DEVICE := ginkgo
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 8/8T
