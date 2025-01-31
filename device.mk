@@ -136,7 +136,6 @@ PRODUCT_PACKAGES += \
     gralloc.trinket \
     hwcomposer.trinket \
     libdisplayconfig.qti \
-    libtinyxml \
     libtinyxml2 \
     libvulkan \
     vendor.qti.hardware.display.allocator-service \
